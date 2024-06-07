@@ -24,7 +24,7 @@ class OrderRepository extends ServiceEntityRepository
             ->setParameter('status', Order::STATUS_CART)
             ->join('o.user', 'u', 'WITH', 'u = :user')
             ->setParameter('user', $user)
-            ->orderBy('o.createAt', 'DESC')
+            ->orderBy('o.createdAt', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
