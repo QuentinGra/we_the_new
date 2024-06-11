@@ -1,0 +1,29 @@
+{% extends 'Backend/base.html.twig' %}
+
+{% block title %}
+	Administration des Delivery
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-2">
+		<h1 class="text-center">Admin des Delivery</h1>
+		<a href="{{ path('admin.delivery.create') }}" class="btn btn-primary">Créer une delivery</a>
+		<div class="row gy-3 mt-2">
+			{% for delivery in deliveries %}
+				<div class="col-md-4">
+					<div class="card">
+						<p>{{ delivery.name }}</p>
+						<p>{{ delivery.description }}</p>
+						<p>{{ delivery.price }}
+							€</p>
+					</div>
+					<div class="card-btn">
+						<a href="{{ path('admin.delivery.edit', {id: delivery.id}) }}" class="btn btn-warning">Modifier</a>
+						<twig:DeleteForm action="{{ path('admin.delivery.delete', {id: delivery.id}) }}" message="Voulez-vous vraiment supprimer ce genre ?" csrftoken="{{ csrf_token('delete' ~ delivery.id) }}"/>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
