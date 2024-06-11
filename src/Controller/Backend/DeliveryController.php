@@ -79,7 +79,7 @@ class DeliveryController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
-    public function delete(?Delivery $delivery, Request $request): Response|RedirectResponse
+    public function delete(?Delivery $delivery, Request $request): RedirectResponse
     {
         if (!$delivery) {
             $this->addFlash('error', 'Delivery non trouvé');
