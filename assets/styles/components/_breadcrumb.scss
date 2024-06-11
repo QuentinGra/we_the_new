@@ -16,6 +16,10 @@
       font-weight: bold;
       margin-top: 3rem;
 
+      a {
+        width: 100%;
+      }
+
       &.active {
         border-bottom: 1px solid $text-color;
         color: $text-color;
