@@ -45,6 +45,12 @@
 			</a>
 		</li>
 		<li class="menu-item">
+			<a href="{{ path('admin.orders.index') }}" class="{{ app.request.get('_route') == 'admin.orders.index' ? 'active' }}">
+				<i class="bi bi-journal-check"></i>
+				<span class="menu-item-text">Orders</span>
+			</a>
+		</li>
+		<li class="menu-item">
 			<a href="{{ path('admin.marques.index') }}" class="{{ app.request.get('_route') == 'admin.marques.index' ? 'active' }}">
 				<i class="bi bi-badge-tm-fill"></i>
 				<span class="menu-item-text">Marques</span>

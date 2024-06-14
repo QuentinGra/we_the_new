@@ -1,0 +1,16 @@
+{% extends 'Backend/base.html.twig' %}
+
+{% block title %}
+	Administration de la commande
+	{{order.number}}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-2">
+		<h1>
+			Commande numéro
+			{{order.number}}
+		</h1>
+	</section>
+{% endblock %}
