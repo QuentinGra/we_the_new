@@ -17,7 +17,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of name
+     * Get the value of name.
      *
      * @return ?string
      */
@@ -27,11 +27,9 @@ class ProductFilter
     }
 
     /**
-     * Set the value of name
+     * Set the value of name.
      *
      * @param ?string $name
-     *
-     * @return self
      */
     public function setName(?string $name): self
     {
@@ -41,7 +39,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of price
+     * Get the value of price.
      *
      * @return ?float
      */
@@ -51,11 +49,9 @@ class ProductFilter
     }
 
     /**
-     * Set the value of price
+     * Set the value of price.
      *
      * @param ?float $price
-     *
-     * @return self
      */
     public function setPrice(?float $price): self
     {
@@ -65,9 +61,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of page
-     *
-     * @return int
+     * Get the value of page.
      */
     public function getPage(): int
     {
@@ -75,11 +69,7 @@ class ProductFilter
     }
 
     /**
-     * Set the value of page
-     *
-     * @param int $page
-     *
-     * @return self
+     * Set the value of page.
      */
     public function setPage(int $page): self
     {
@@ -89,9 +79,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of limit
-     *
-     * @return int
+     * Get the value of limit.
      */
     public function getLimit(): int
     {
@@ -99,11 +87,7 @@ class ProductFilter
     }
 
     /**
-     * Set the value of limit
-     *
-     * @param int $limit
-     *
-     * @return self
+     * Set the value of limit.
      */
     public function setLimit(int $limit): self
     {
@@ -113,7 +97,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of sort
+     * Get the value of sort.
      *
      * @return ?string
      */
@@ -123,11 +107,9 @@ class ProductFilter
     }
 
     /**
-     * Set the value of sort
+     * Set the value of sort.
      *
      * @param ?string $sort
-     *
-     * @return self
      */
     public function setSort(?string $sort): self
     {
@@ -137,7 +119,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of direction
+     * Get the value of direction.
      *
      * @return ?string
      */
@@ -147,11 +129,9 @@ class ProductFilter
     }
 
     /**
-     * Set the value of direction
+     * Set the value of direction.
      *
      * @param ?string $direction
-     *
-     * @return self
      */
     public function setDirection(?string $direction): self
     {
@@ -161,7 +141,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of min
+     * Get the value of min.
      *
      * @return ?int
      */
@@ -171,11 +151,9 @@ class ProductFilter
     }
 
     /**
-     * Set the value of min
+     * Set the value of min.
      *
      * @param ?int $min
-     *
-     * @return self
      */
     public function setMin(?int $min): self
     {
@@ -185,7 +163,7 @@ class ProductFilter
     }
 
     /**
-     * Get the value of max
+     * Get the value of max.
      *
      * @return ?int
      */
@@ -195,11 +173,9 @@ class ProductFilter
     }
 
     /**
-     * Set the value of max
+     * Set the value of max.
      *
      * @param ?int $max
-     *
-     * @return self
      */
     public function setMax(?int $max): self
     {

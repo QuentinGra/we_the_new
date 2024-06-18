@@ -2,10 +2,10 @@
 
 namespace App\Entity\Order;
 
-use App\Entity\User;
-use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\DateTimeTrait;
+use App\Entity\User;
 use App\Repository\Order\PaymentRepository;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PaymentRepository::class)]

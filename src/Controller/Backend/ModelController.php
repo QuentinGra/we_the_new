@@ -84,7 +84,7 @@ class ModelController extends AbstractController
             return $this->redirectToRoute('admin.models.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $model->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$model->getId(), $request->request->get('token'))) {
             $this->em->remove($model);
             $this->em->flush();
 

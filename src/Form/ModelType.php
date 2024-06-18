@@ -22,7 +22,7 @@ class ModelType extends AbstractType
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom du modèle',
-                ]
+                ],
             ])
             ->add('marque', EntityType::class, [
                 'label' => 'Marque',

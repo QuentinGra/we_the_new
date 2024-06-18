@@ -11,7 +11,6 @@ use Symfony\Bundle\SecurityBundle\Security;
 
 class CartManager
 {
-
     public function __construct(
         private EntityManagerInterface $em,
         private OrderFactory $orderFactory,
@@ -33,9 +32,9 @@ class CartManager
                 // on récupère le dernier panier enregistré en base
                 $cart = $this->orderRepo->findLastCartByUser($user);
             }
-            // Si on a un panier en session sans utilisateur
-            // Et qu'on a un utilisateur de connecter
-        } else if (!$cart->getUser() && $user) {
+        // Si on a un panier en session sans utilisateur
+        // Et qu'on a un utilisateur de connecter
+        } elseif (!$cart->getUser() && $user) {
             $cart->setUser($user);
 
             // On récupère le dernier panier de l'utilisateur enregistré en base

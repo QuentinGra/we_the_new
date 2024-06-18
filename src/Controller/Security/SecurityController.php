@@ -26,7 +26,7 @@ class SecurityController extends AbstractController
     #[Route('/register', name: 'app.register', methods: ['GET', 'POST'])]
     public function register(Request $request, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $em): Response
     {
-        $user = new User;
+        $user = new User();
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

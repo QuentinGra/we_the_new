@@ -32,7 +32,7 @@ class UserType extends AbstractType
                 'first_options' => [
                     'label' => 'Mot de passe',
                     'attr' => [
-                        'placeholder' => '*******'
+                        'placeholder' => '*******',
                     ],
                     'constraints' => [
                         new Assert\NotBlank(),
@@ -40,28 +40,28 @@ class UserType extends AbstractType
                             'min' => 6,
                             'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères.',
                             'max' => 4096,
-                        ])
+                        ]),
                     ],
                 ],
                 'second_options' => [
                     'label' => 'Répéter le mot de passe',
                     'attr' => [
-                        'placeholder' => '*******'
-                    ]
+                        'placeholder' => '*******',
+                    ],
                 ],
                 'mapped' => false,
             ])
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
-                    'placeholder' => 'Prénom'
-                ]
+                    'placeholder' => 'Prénom',
+                ],
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'placeholder' => 'Nom'
-                ]
+                    'placeholder' => 'Nom',
+                ],
             ]);
 
         if ($options['isAdmin']) {
@@ -82,13 +82,13 @@ class UserType extends AbstractType
                 'required' => false,
                 'label' => 'Téléphone',
                 'attr' => [
-                    'placeholder' => '06 06 06 06 06'
-                ]
+                    'placeholder' => '06 06 06 06 06',
+                ],
             ])
                 ->add('birthDate', DateType::class, [
                     'label' => 'Date de naissance',
                     'attr' => [
-                        'placeholder' => 'jj/mm/aaaa'
+                        'placeholder' => 'jj/mm/aaaa',
                     ],
                     'required' => false,
                     'widget' => 'single_text',
