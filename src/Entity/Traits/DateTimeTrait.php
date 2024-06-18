@@ -30,7 +30,7 @@ trait DateTimeTrait
     #[ORM\PrePersist]
     public function autoSetCreatedAt(): static
     {
-        if ($this->createdAt === null) {
+        if (null === $this->createdAt) {
             $this->setCreatedAt(new \DateTimeImmutable());
         }
 

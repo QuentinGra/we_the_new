@@ -15,8 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\HasLifecycleCallbacks]
 class Gender
 {
-    use EnableTrait,
-        DateTimeTrait;
+    use EnableTrait;
+    use DateTimeTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

@@ -22,13 +22,13 @@ class CartItemType extends AbstractType
                 'label' => 'Supprimer',
                 'attr' => [
                     'class' => 'btn btn-danger',
-                ]
+                ],
             ]);
     }
 
     private function getQuantityChoices(): array
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 10; ++$i) {
             $choices[$i] = $i;
         }
 

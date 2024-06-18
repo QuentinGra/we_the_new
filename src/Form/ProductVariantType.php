@@ -10,7 +10,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,8 +28,8 @@ class ProductVariantType extends AbstractType
                 'label' => 'Prix HT',
                 'currency' => 'EUR',
                 'attr' => [
-                    'placeholder' => 'Prix du produit'
-                ]
+                    'placeholder' => 'Prix du produit',
+                ],
             ])
             ->add('taxe', EntityType::class, [
                 'class' => Taxe::class,
@@ -60,6 +59,7 @@ class ProductVariantType extends AbstractType
         foreach ($choices as $choice) {
             $output[$choice] = $choice;
         }
+
         return $output;
     }
 

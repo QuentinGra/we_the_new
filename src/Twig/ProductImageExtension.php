@@ -19,7 +19,7 @@ class ProductImageExtension extends AbstractExtension
     public function getMainImage(Product $product): ?ProductImage
     {
         $mainImage = array_filter($product->getImages()->toArray(), function (ProductImage $productImage): ?ProductImage {
-            if ($productImage->getType() === 'main') {
+            if ('main' === $productImage->getType()) {
                 return $productImage;
             }
 
@@ -34,7 +34,7 @@ class ProductImageExtension extends AbstractExtension
         $images = [];
 
         $images = array_filter($product->getImages()->toArray(), function (ProductImage $productImage) use ($images) {
-            if ($productImage->getType() !== 'main') {
+            if ('main' !== $productImage->getType()) {
                 $images[] = $productImage;
 
                 return $images;

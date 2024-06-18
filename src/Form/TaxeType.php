@@ -18,13 +18,13 @@ class TaxeType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'placeholder' => 'Nom de la taxe'
-                ]
+                    'placeholder' => 'Nom de la taxe',
+                ],
             ])
             ->add('rate', PercentType::class, [
                 'label' => 'Taux',
                 'attr' => [
-                    'placeholder' => 'Taux de la taxe'
+                    'placeholder' => 'Taux de la taxe',
                 ],
             ])
             ->add('enable', CheckboxType::class, [

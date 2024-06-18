@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
 
         $manager->persist($user);
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $user = (new User())
                 ->setEmail($this->faker->unique()->email())
                 ->setFirstName($this->faker->firstName())

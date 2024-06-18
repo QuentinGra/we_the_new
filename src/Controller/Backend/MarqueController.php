@@ -36,7 +36,7 @@ class MarqueController extends AbstractController
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response|RedirectResponse
     {
-        $marque = new Marque;
+        $marque = new Marque();
 
         $form = $this->createForm(MarqueType::class, $marque);
         $form->handleRequest($request);
@@ -90,7 +90,7 @@ class MarqueController extends AbstractController
             return $this->redirectToRoute('admin.marques.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $marque->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$marque->getId(), $request->request->get('token'))) {
             $this->em->remove($marque);
             $this->em->flush();
         } else {

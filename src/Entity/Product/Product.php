@@ -2,14 +2,14 @@
 
 namespace App\Entity\Product;
 
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Traits\EnableTrait;
 use App\Entity\Traits\DateTimeTrait;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Traits\EnableTrait;
 use App\Repository\Product\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -17,8 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\HasLifecycleCallbacks]
 class Product
 {
-    use DateTimeTrait,
-        EnableTrait;
+    use DateTimeTrait;
+    use EnableTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

@@ -20,7 +20,7 @@ class MarqueType extends AbstractType
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom de la marque',
-                ]
+                ],
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',

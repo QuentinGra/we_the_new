@@ -7,10 +7,10 @@ use App\Entity\Product\Gender;
 use App\Form\GenderType;
 use App\Repository\Product\GenderRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/api/gender', name: 'api.gender')]
 class GenderApiController extends AbstractController
@@ -31,7 +31,7 @@ class GenderApiController extends AbstractController
             200,
             [],
             [
-                'groups' => ['gender:read', 'read']
+                'groups' => ['gender:read', 'read'],
             ]
         );
     }
@@ -47,14 +47,14 @@ class GenderApiController extends AbstractController
         }
 
         return $this->json($gender, 200, [], [
-            'groups' => ['gender:read', 'read', 'gender:show']
+            'groups' => ['gender:read', 'read', 'gender:show'],
         ]);
     }
 
     #[Route('/create', name: '.create', methods: ['POST'])]
     public function create(Request $request): JsonResponse
     {
-        $gender = new Gender;
+        $gender = new Gender();
 
         $form = $this->createForm(GenderType::class, $gender, [
             'csrf_protection' => false,
@@ -67,7 +67,7 @@ class GenderApiController extends AbstractController
             $this->em->flush();
 
             return $this->json($gender, 201, [], [
-                'groups' => ['gender:read', 'read', 'gender:show']
+                'groups' => ['gender:read', 'read', 'gender:show'],
             ]);
         }
 
@@ -95,7 +95,7 @@ class GenderApiController extends AbstractController
             $this->em->flush();
 
             return $this->json($gender, 201, [], [
-                'groups' => ['gender:read', 'read', 'gender:show']
+                'groups' => ['gender:read', 'read', 'gender:show'],
             ]);
         }
 

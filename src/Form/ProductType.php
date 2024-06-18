@@ -6,7 +6,6 @@ use App\Entity\Product\Gender;
 use App\Entity\Product\Model;
 use App\Entity\Product\Product;
 use App\Form\DataTransformer\ProductAssociationsTransformer;
-use App\Form\ProductImageType;
 use App\Repository\Product\GenderRepository;
 use App\Repository\Product\ModelRepository;
 use App\Repository\Product\ProductRepository;
@@ -32,7 +31,7 @@ class ProductType extends AbstractType
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom du produit',
-                ]
+                ],
             ])
             ->add('gender', EntityType::class, [
                 'label' => 'Genre',
@@ -76,7 +75,7 @@ class ProductType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Description du produit',
                     'rows' => 5,
-                ]
+                ],
             ])
             ->add('authenticity', TextareaType::class, [
                 'label' => 'Authenticité',

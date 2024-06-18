@@ -8,7 +8,6 @@ use App\Filter\ProductFilter;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
-use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -85,9 +84,9 @@ class ProductRepository extends ServiceEntityRepository
                 ->setParameter('name', "%{$productFilter->getName()}%");
         }
 
-        if ($productFilter->getSort() && $productFilter->getSort() !== 'price') {
+        if ($productFilter->getSort() && 'price' !== $productFilter->getSort()) {
             $query->orderBy($productFilter->getSort(), $productFilter->getDirection() ?? 'ASC');
-        } elseif ($productFilter->getSort() === 'price') {
+        } elseif ('price' === $productFilter->getSort()) {
             $query
                 ->join('p.productVariants', 'pv')
                 ->groupBy('p')

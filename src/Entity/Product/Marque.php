@@ -19,8 +19,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[Vich\Uploadable]
 class Marque
 {
-    use DateTimeTrait,
-        EnableTrait;
+    use DateTimeTrait;
+    use EnableTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -55,7 +55,6 @@ class Marque
     {
         $this->models = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {

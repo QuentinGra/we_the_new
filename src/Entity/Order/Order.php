@@ -40,7 +40,7 @@ class Order
     #[Assert\Length(max: 255)]
     #[Assert\Choice(
         choices: [
-            self::STATUS_NEW, self::STATUS_CART, self::STATUS_AWAITING_PAYMENT, self::STATUS_SHIPPING, self::STATUS_COMPLETED, self::STATUS_CANCELED
+            self::STATUS_NEW, self::STATUS_CART, self::STATUS_AWAITING_PAYMENT, self::STATUS_SHIPPING, self::STATUS_COMPLETED, self::STATUS_CANCELED,
         ]
     )]
     private ?string $status = null;
@@ -148,7 +148,6 @@ class Order
     {
         foreach ($this->orderItems as $existingOrderItem) {
             if ($existingOrderItem->equals($orderItem)) {
-
                 $existingOrderItem->setQuantity(
                     $existingOrderItem->getQuantity() + 1
                 );
