@@ -19,21 +19,21 @@ class ProductFilterType extends AbstractType
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom du model',
-                ]
+                ],
             ])
             ->add('min', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Prix min'
-                ]
+                    'placeholder' => 'Prix min',
+                ],
             ])
             ->add('max', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Prix max'
-                ]
+                    'placeholder' => 'Prix max',
+                ],
             ]);
     }
 

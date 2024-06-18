@@ -10,25 +10,29 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 class Product
 {
-    use DateTimeTrait,
-        EnableTrait;
+    use DateTimeTrait;
+    use EnableTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['gender:show'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['gender:show'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     #[Gedmo\Slug(fields: ['name'])]
+    #[Groups(['gender:show'])]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT)]

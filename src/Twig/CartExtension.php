@@ -8,7 +8,6 @@ use Twig\TwigFunction;
 
 class CartExtension extends AbstractExtension
 {
-
     public function __construct(
         private CartManager $cartManager,
     ) {

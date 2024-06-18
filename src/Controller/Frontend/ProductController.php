@@ -64,7 +64,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('app.products.index');
         }
 
-        $orderItem = (new OrderItem)
+        $orderItem = (new OrderItem())
             ->setQuantity(1);
 
         $form = $this->createForm(AddToCartType::class, $orderItem, [

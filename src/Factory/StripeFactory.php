@@ -2,13 +2,13 @@
 
 namespace App\Factory;
 
-use Stripe\Stripe;
 use App\Entity\Order\Order;
 use App\Entity\Order\OrderItem;
 use App\Event\StripeEvent;
 use Stripe\Checkout\Session;
 use Stripe\Event;
 use Stripe\Exception\SignatureVerificationException;
+use Stripe\Stripe;
 use Stripe\Webhook;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
@@ -40,10 +40,10 @@ class StripeFactory
                     'price_data' => [
                         'currency' => 'EUR',
                         'product_data' => [
-                            'name' => $orderItem->getQuantity() . ' x ' . $orderItem->getProductVariant()->getProduct()->getName(),
+                            'name' => $orderItem->getQuantity().' x '.$orderItem->getProductVariant()->getProduct()->getName(),
                         ],
                         'unit_amount' => bcmul($orderItem->getPriceTTC() / $orderItem->getQuantity(), 100),
-                    ]
+                    ],
                 ];
             }, $order->getOrderItems()->toArray()),
             'shipping_options' => [
@@ -68,15 +68,15 @@ class StripeFactory
                     'payment_id' => $order->getPayments()->last()->getId(),
                 ],
             ],
-
         ]);
     }
 
     /**
-     * Permet d'analyser la requête Stripe et de retourner l'évênement correspondant
+     * Permet d'analyser la requête Stripe et de retourner l'évênement correspondant.
      *
      * @param string $signature La signature de la requête
-     * @param mixed $body Le contenu de la requête
+     * @param mixed  $body      Le contenu de la requête
+     *
      * @return JsonResponse une réponse JSON
      */
     public function handleStripeRequest(string $signature, mixed $body): JsonResponse
@@ -106,10 +106,11 @@ class StripeFactory
     }
 
     /**
-     * Permet de décoder la requête Stripe et de retourner l'évênement correspondant
+     * Permet de décoder la requête Stripe et de retourner l'évênement correspondant.
      *
      * @param string $signature La signature de la requête
-     * @param mixed $body Le contenu de la requête
+     * @param mixed  $body      Le contenu de la requête
+     *
      * @return Event|JsonResponse L'évênement Stripe ou une réponse JSON d'erreur
      */
     private function getEvent(string $signature, mixed $body): Event|JsonResponse

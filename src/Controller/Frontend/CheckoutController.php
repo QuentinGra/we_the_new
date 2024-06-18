@@ -2,22 +2,22 @@
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
 use App\Entity\Address;
+use App\Entity\Delivery\Shipping;
+use App\Entity\Order\Payment;
+use App\Entity\User;
+use App\Factory\StripeFactory;
 use App\Form\AddressType;
 use App\Form\PaymentType;
-use App\Manager\CartManager;
-use App\Entity\Order\Payment;
-use App\Factory\StripeFactory;
-use App\Entity\Delivery\Shipping;
 use App\Form\ShippingCheckoutType;
+use App\Manager\CartManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/checkout', name: 'app.checkout')]
 class CheckoutController extends AbstractController
@@ -85,7 +85,7 @@ class CheckoutController extends AbstractController
         if (!$cart->getShippings()->isEmpty()) {
             $shipping = $cart->getShippings()->last();
         } else {
-            $shipping = (new Shipping)->setStatus(Shipping::STATUS_NEW);
+            $shipping = (new Shipping())->setStatus(Shipping::STATUS_NEW);
         }
 
         $form = $this->createForm(ShippingCheckoutType::class, $shipping);
@@ -119,7 +119,7 @@ class CheckoutController extends AbstractController
             return $this->redirectToRoute('app.cart.show');
         }
 
-        $payment = (new Payment)->setStatus(Payment::STATUS_NEW)
+        $payment = (new Payment())->setStatus(Payment::STATUS_NEW)
             ->setUser($this->getUser())
             ->setOrderRef($cart);
 

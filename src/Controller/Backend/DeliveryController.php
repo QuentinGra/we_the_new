@@ -4,18 +4,17 @@ namespace App\Controller\Backend;
 
 use App\Entity\Delivery\Delivery;
 use App\Form\DeliveryType;
+use App\Repository\Delivery\DeliveryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Repository\Delivery\DeliveryRepository;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/admin/delivery', name: 'admin.delivery')]
 class DeliveryController extends AbstractController
 {
-
     public function __construct(
         private EntityManagerInterface $em,
         private DeliveryRepository $deliveryRepository,
@@ -33,7 +32,7 @@ class DeliveryController extends AbstractController
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response|RedirectResponse
     {
-        $delivery = new Delivery;
+        $delivery = new Delivery();
 
         $form = $this->createForm(DeliveryType::class, $delivery);
         $form->handleRequest($request);
@@ -87,7 +86,7 @@ class DeliveryController extends AbstractController
             return $this->redirectToRoute('admin.delivery.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $delivery->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$delivery->getId(), $request->request->get('token'))) {
             $this->em->remove($delivery);
             $this->em->flush();
         } else {

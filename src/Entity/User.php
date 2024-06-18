@@ -264,9 +264,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         foreach ($this->addresses as $userAddress) {
             if (
-                $address->getAddress() === $userAddress->getAddress() &&
-                $address->getZipCode() === $userAddress->getZipCode() &&
-                $address->getCity() === $userAddress->getCity()
+                $address->getAddress() === $userAddress->getAddress()
+                && $address->getZipCode() === $userAddress->getZipCode()
+                && $address->getCity() === $userAddress->getCity()
             ) {
                 return true;
             }
@@ -285,7 +285,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function addAddress(Address $address): static
     {
-        if ($this->defaultAddress === null) {
+        if (null === $this->defaultAddress) {
             $this->setDefaultAddress($address);
         }
 

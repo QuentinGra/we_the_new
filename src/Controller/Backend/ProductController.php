@@ -3,7 +3,6 @@
 namespace App\Controller\Backend;
 
 use App\Entity\Product\Product;
-use App\Entity\Product\ProductAssociation;
 use App\Form\ProductType;
 use App\Repository\Product\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -112,7 +111,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('admin.products.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('token'))) {
             $this->em->remove($product);
             $this->em->flush();
 

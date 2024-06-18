@@ -18,8 +18,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[Vich\Uploadable]
 class Model
 {
-    use EnableTrait,
-        DateTimeTrait;
+    use EnableTrait;
+    use DateTimeTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

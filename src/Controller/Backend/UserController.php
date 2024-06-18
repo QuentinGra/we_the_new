@@ -63,10 +63,11 @@ class UserController extends AbstractController
     {
         if (!$user) {
             $this->addFlash('danger', 'Utilisateur non trouvé.');
+
             return $this->redirectToRoute('admin.users.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('token'))) {
             $this->em->remove($user);
             $this->em->flush();
 

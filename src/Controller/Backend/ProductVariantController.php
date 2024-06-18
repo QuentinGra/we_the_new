@@ -64,7 +64,7 @@ class ProductVariantController extends AbstractController
             $this->addFlash('success', 'La variante de produit a bien été créée.');
 
             return $this->redirectToRoute('admin.products-variants.index', [
-                'id' => $productVariant->getProduct()->getId()
+                'id' => $productVariant->getProduct()->getId(),
             ]);
         }
 

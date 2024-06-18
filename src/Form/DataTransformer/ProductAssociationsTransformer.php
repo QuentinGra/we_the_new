@@ -21,7 +21,6 @@ class ProductAssociationsTransformer implements DataTransformerInterface
      * Transforms an array of ProductAssociations to an array of Products.
      *
      * @param Collection|null $productAssociations
-     * @return array
      */
     public function transform($productAssociations): array
     {
@@ -38,7 +37,6 @@ class ProductAssociationsTransformer implements DataTransformerInterface
      * Transforms an array of Products to an array of ProductAssociations.
      *
      * @param array $products
-     * @return Collection
      */
     public function reverseTransform($products): Collection
     {

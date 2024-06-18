@@ -24,18 +24,18 @@ class CartType extends AbstractType
                 'label' => 'Vider le panier',
                 'attr' => [
                     'class' => 'btn btn-danger',
-                ]
+                ],
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Mettre à jour le panier',
                 'attr' => [
                     'class' => 'btn btn-secondary',
-                ]
+                ],
             ]);
 
         $builder
-            ->addEventSubscriber(new ClearCartListener)
-            ->addEventSubscriber(new RemoveItemCartListener);
+            ->addEventSubscriber(new ClearCartListener())
+            ->addEventSubscriber(new RemoveItemCartListener());
     }
 
     public function configureOptions(OptionsResolver $resolver): void

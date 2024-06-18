@@ -16,7 +16,7 @@ class OrderFactory
 
     public function create(): Order
     {
-        $order = (new Order)->setStatus(Order::STATUS_CART);
+        $order = (new Order())->setStatus(Order::STATUS_CART);
 
         if ($this->security->getUser()) {
             $order->setUser($this->security->getUser());
@@ -27,6 +27,6 @@ class OrderFactory
 
     public function createItem(ProductVariant $productVariant): OrderItem
     {
-        return (new OrderItem)->setProductVariant($productVariant)->setQuantity(1);
+        return (new OrderItem())->setProductVariant($productVariant)->setQuantity(1);
     }
 }

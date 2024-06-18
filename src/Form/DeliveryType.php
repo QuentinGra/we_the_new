@@ -4,12 +4,12 @@ namespace App\Form;
 
 use App\Entity\Delivery\Delivery;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class DeliveryType extends AbstractType
 {
@@ -20,7 +20,7 @@ class DeliveryType extends AbstractType
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom',
-                ]
+                ],
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
@@ -35,7 +35,7 @@ class DeliveryType extends AbstractType
                 'currency' => 'EUR',
                 'attr' => [
                     'placeholder' => 'Prix',
-                ]
+                ],
             ])
             ->add('enable', CheckboxType::class, [
                 'label' => 'Actif',

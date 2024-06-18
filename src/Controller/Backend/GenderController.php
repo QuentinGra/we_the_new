@@ -33,7 +33,7 @@ class GenderController extends AbstractController
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response|RedirectResponse
     {
-        $gender = new Gender;
+        $gender = new Gender();
 
         $form = $this->createForm(GenderType::class, $gender);
         $form->handleRequest($request);
@@ -87,7 +87,7 @@ class GenderController extends AbstractController
             return $this->redirectToRoute('admin.genders.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $gender->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$gender->getId(), $request->request->get('token'))) {
             $this->em->remove($gender);
             $this->em->flush();
         } else {
