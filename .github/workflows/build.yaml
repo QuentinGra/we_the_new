@@ -69,14 +69,17 @@ jobs:
           check-latest: true
           #registry-url: npm.fontawesome.com
 
-      - name: Yarn install
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Bun install
         run:
-          yarn install
+          bun install
           #env:
         #NODE_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
-      - name: Yarn build
-        run: yarn run encore production
+      - name: Bun build
+        run: bun run build
 
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
       - name: Check Symfony requirements
