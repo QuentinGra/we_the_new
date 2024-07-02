@@ -37,6 +37,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, iconv, json, mbstring, fileinfo
+          coverage: xdebug
         env:
           update: true
 
@@ -98,7 +99,7 @@ jobs:
         run: |
           php bin/console doctrine:database:create --env=test
           php bin/console doctrine:schema:update --env=test --force --complete
-          php bin/phpunit --testdox
+          php bin/phpunit --testdox --coverage-clover=./phpunit-coverage.xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
