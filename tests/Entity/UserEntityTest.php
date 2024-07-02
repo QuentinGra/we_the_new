@@ -3,11 +3,11 @@
 namespace App\Tests\Entity;
 
 use App\Entity\User;
-use App\Tests\Traits\TestTrait;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use App\Tests\Traits\TestTrait;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\ORMDatabaseTool;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class UserEntityTest extends KernelTestCase
 {
@@ -32,12 +32,12 @@ class UserEntityTest extends KernelTestCase
 
         $users = $userRepo->findAll();
 
-        $this->assertCount(11, $users);
+        $this->assertCount(12, $users);
     }
 
     private function getEntity(): User
     {
-        return (new User)
+        return (new User())
             ->setEmail('test@test.com')
             ->setFirstName('test')
             ->setLastName('test')
@@ -67,10 +67,6 @@ class UserEntityTest extends KernelTestCase
 
     /**
      * @dataProvider provideEmail
-     *
-     * @param string $email
-     * @param integer $number
-     * @return void
      */
     public function testInvalidEmail(string $email, int $number): void
     {
@@ -82,10 +78,6 @@ class UserEntityTest extends KernelTestCase
 
     /**
      * @dataProvider provideName
-     *
-     * @param string $name
-     * @param integer $number
-     * @return void
      */
     public function testInvalidFirstName(string $name): void
     {
@@ -97,10 +89,6 @@ class UserEntityTest extends KernelTestCase
 
     /**
      * @dataProvider provideName
-     *
-     * @param string $name
-     * @param integer $number
-     * @return void
      */
     public function testInvalidLastName(string $name): void
     {
@@ -112,10 +100,6 @@ class UserEntityTest extends KernelTestCase
 
     /**
      * @dataProvider providePhone
-     *
-     * @param string $phone
-     * @param integer $number
-     * @return void
      */
     public function testInvalidPhone(string $phone, int $number): void
     {

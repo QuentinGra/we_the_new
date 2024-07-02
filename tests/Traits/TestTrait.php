@@ -16,7 +16,7 @@ trait TestTrait
 
         // On boucle sur les erreurs
         foreach ($errors as $error) {
-            $messageErrors[] = $error->getPropertyPath() . ' => ' . $error->getMessage();
+            $messageErrors[] = $error->getPropertyPath().' => '.$error->getMessage();
         }
 
         $this->assertCount($number, $errors, implode(', ', $messageErrors));

@@ -25,7 +25,7 @@ class GenderEntityTest extends KernelTestCase
     public function testRepositoryCount(): void
     {
         $this->databaseTool->loadAliceFixture([
-            \dirname(__DIR__) . '/Fixtures/GenderFixtures.yaml',
+            \dirname(__DIR__).'/Fixtures/GenderFixtures.yaml',
         ]);
 
         $genders = self::getContainer()->get(GenderRepository::class)->findAll();
@@ -35,7 +35,7 @@ class GenderEntityTest extends KernelTestCase
 
     private function getEntity(): Gender
     {
-        return (new Gender)
+        return (new Gender())
             ->setName('test')
             ->setEnable(true);
     }
@@ -47,9 +47,6 @@ class GenderEntityTest extends KernelTestCase
 
     /**
      * @dataProvider provideName
-     *
-     * @param string $name
-     * @return void
      */
     public function testInvalidName(string $name): void
     {
