@@ -100,6 +100,11 @@ jobs:
           php bin/console doctrine:schema:update --env=test --force --complete
           php bin/phpunit --testdox
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
       ## —— Static analysis ✨ —————————————————————————————————————————————————
       - name: Static analysis of PHP code (PHPStan) and Twig with Lint
         run: |
