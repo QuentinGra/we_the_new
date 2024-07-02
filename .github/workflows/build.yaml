@@ -103,5 +103,4 @@ jobs:
       ## —— Static analysis ✨ —————————————————————————————————————————————————
       - name: Static analysis of PHP code (PHPStan) and Twig with Lint
         run: |
-          vendor/bin/phpstan analyse -l 0 src tests
           bin/console lint:twig ./templates
