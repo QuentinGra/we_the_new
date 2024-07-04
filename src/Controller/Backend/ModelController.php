@@ -3,6 +3,8 @@
 namespace App\Controller\Backend;
 
 use App\Entity\Product\Model;
+use App\Filter\ModelFilter;
+use App\Form\ModelFilterType;
 use App\Form\ModelType;
 use App\Repository\Product\ModelRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,10 +23,21 @@ class ModelController extends AbstractController
     }
 
     #[Route('', name: '.index', methods: ['GET'])]
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        $modelFilter = new ModelFilter;
+
+        $modelFilter
+            ->setPage($request->query->getInt('page', 1))
+            ->setSort($request->query->get('sort'))
+            ->setDirection($request->query->get('direction'));
+
+        $form = $this->createForm(ModelFilterType::class, $modelFilter);
+        $form->handleRequest($request);
+
         return $this->render('Backend/Models/index.html.twig', [
-            'models' => $this->modelRepository->findAll(),
+            'models' => $this->modelRepository->findWithFilter($modelFilter),
+            'form' => $form,
         ]);
     }
 
@@ -84,7 +97,7 @@ class ModelController extends AbstractController
             return $this->redirectToRoute('admin.models.index');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$model->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete' . $model->getId(), $request->request->get('token'))) {
             $this->em->remove($model);
             $this->em->flush();
 

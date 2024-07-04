@@ -25,7 +25,7 @@ class UserEntityTest extends KernelTestCase
     public function testReposityCount(): void
     {
         $this->databaseTool->loadAliceFixture([
-            \dirname(__DIR__) . '/Fixtures/UserFixtures.yaml',
+            \dirname(__DIR__).'/Fixtures/UserFixtures.yaml',
         ]);
 
         $userRepo = self::getContainer()->get(UserRepository::class);
@@ -144,7 +144,7 @@ class UserEntityTest extends KernelTestCase
                 'number' => 1,
             ],
             'max_length' => [
-                'email' => str_repeat('a', 180) . '@test.com',
+                'email' => str_repeat('a', 180).'@test.com',
                 'number' => 1,
             ],
             'empty' => [

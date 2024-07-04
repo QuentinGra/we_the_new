@@ -8,10 +8,18 @@
 {% block body %}
 	<section class="container mt-2">
 		<h1 class="text-center">Administration des models</h1>
-		<a href="{{ path('admin.models.create') }}" class="btn btn-primary">Créer un model</a>
+		<a href="{{ path('admin.models.create') }}" class="btn btn-primary mb-2">Créer un model</a>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button type="submit" class="btn btn-primary">Rechercher</button>
+		{{ form_end(form) }}
 		<div class="card-marque-list mt-4">
 			{% for model in models %}
 				{% include 'Components/Cards/_modelCard.html.twig' with { showDetails: true } %}
+			{% else %}
+				<div class="alert alert-info">
+					<p>Aucun résultat trouvé</p>
+				</div>
 			{% endfor %}
 		</div>
 	</section>

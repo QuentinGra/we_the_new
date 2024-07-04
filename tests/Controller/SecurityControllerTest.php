@@ -21,7 +21,7 @@ class SecurityControllerTest extends WebTestCase
         $this->databaseTool = self::getContainer()->get(DatabaseToolCollection::class)->get();
 
         $this->databaseTool->loadAliceFixture([
-            \dirname(__DIR__) . '/Fixtures/UserFixtures.yaml',
+            \dirname(__DIR__).'/Fixtures/UserFixtures.yaml',
         ]);
     }
 
